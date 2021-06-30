@@ -1,3 +1,6 @@
+# Poster
+![](fig/Poster_Nicholas_Cowie_COBRA_2021.pdf?raw=true)
+
 # Links to Referenced Software
 [Maud](https://github.com/biosustain/Maud) -> Kinetic Modeling Software
 [Stan](https://mc-stan.org) -> Bayesian Inference Package
