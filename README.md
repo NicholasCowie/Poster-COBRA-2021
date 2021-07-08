@@ -1,36 +1,38 @@
 # Poster
 ![][image-1]
 
-# Links to Referenced Software
+# Links to referenced software
 [Maud][1] -\> Kinetic Modeling Software \\
 [Stan][2] -\> Bayesian Inference Package
 
-# Methionine Cycle
+# Methionine cycle
 The methionine cycle is a fundamental pathway in human metabolism. Its intermediates participate in a variety of mechanisms competing for the same resources.  These functions all occur simultaneously resulting in a highly regulated pathway with approximately 6 allosteric effectors. In order to understand the operation of the methionine cycle we constructed a kinetic model as a system of ODEs, where the state variables are the metabolite concentrations and the fluxes are constrained by mechanistic rate laws. However, these systems are described as ‘sloppy parameter’ systems, where the marginal parameter distributions can be large, yet still display tight posterior predictions. Furthermore, measuring these parameters independently is obscured by measuring the system in _in vitro_ conditions, as opposed to those experienced _in vivo_. This prevents the standard practice of placing tight priors on the parameter values. 
 ## Pathway
 ![][image-2]
 # Rerunning simluation
 The previous sampling run did not converge between chains, upon rerunning the simulation with a longer warmup and samling phase we were able to achieve all Rhat values \< 1.01. The rerun of simulations was conducted with simulated data constraining all metabolites and assuming 10% noise. The number of simulated experiments is 2 and the new data is under `data/maud_output-methionine_cycle `
-# Measurement Distributions
+# Measurement distributions
 Comparing the posterior distribution to the prior, it's easy to see a strong contraction towards the measured values. The prior concentrations
 and fluxes vary on the order of magnitude level, whilst this is less prevalent in the posterior. 
 ![][image-3]
 
-# Parameter Distributions
+# Parameter distributions
 ## Marginal distributions
 The dramatic increase in posterior performance for the measured variables is less noticeable in the parameters and is typical of sloppy parameter systems<sup>1</sup>. Most posteriors span similar orders of magnitude as their prior, especially with the Michaelis-Menten constants (kms). This isn't the case with equilibrium constants (keqs), whose values, in combination with metabolite concentrations determine the directionality of fluxes.
 ![][image-4]
 
-## Correlations within posterior distributions
-In order to understand how the sloppy parameter system arrises we can observe the pair plots, specifically for the enzyme CBS1. This enzyme has a highly correlation between the kcat parameter and the Michaelis-Menten (Km) constant for hcyc-L. A possible explanation of this is rate law is multiplicatively  degenerate with kcat/Km = constant. This typically is not the case as the Km also influences enzyme saturation and may explain why the Km for ser-L is not highly correlated. 
+## Correlations within posterior distributions 
+In order to understand how the sloppy parameter system arrises we can observe the pair plots, specifically for the enzyme CBS1. This enzyme has a highly correlation between the kcat parameter and the Michaelis-Menten (Km) constant for hcyc-L. A possible explanation of this is rate law is multiplicatively  degenerate with kcat/Km = constant. This typically is not the case as the Km also influences enzyme saturation and may explain why the Km for ser-L is not highly correlated.  
+
+### CBS1 pair plots (plot on log scale)
 
 ![][image-5]
 ## Interesting degenerate posterior distributions
 
 Another interesting observation is the skewed equilibrium constants within MS1 and AHC1. There also appears to be interesting interactions between the Kms as well as Keqs within these enzymes as well. This interaction likely arises from the Haldane relationship where the reverse catalytic rate for reversible reactions is constrained by the Keq and Kms. This could result in higher dimensional correlations that are unidentifiable in pair plots. To remove these correlations more experiments must be conducted that constrain the Km parameters. By constraining these parameters further the correlations in the posterior space will dissipate, and potentially improve sampling speed.
-### AHC1 pair plots
+### AHC1 pair plots (plot on log scale)
 ![][image-6]
-### MS1 pair plots
+### MS1 pair plots (plot on log scale)
 ![][image-7]
 
 
