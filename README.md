@@ -10,7 +10,7 @@ The methionine cycle is a fundamental pathway in human metabolism. Its intermedi
 ## Pathway
 ![][image-2]
 # Rerunning simluation
-The previous sampling run did not converge between chains, upon rerunning the simulation with a longer warmup and samling phase we were able to achieve all Rhat values \< 1.01. The rerun of simulations was conducted with simulated data constraining all metabolites and assuming 10% noise. The number of simulated experiments is 2 and the new data is under `data/simulation_study_input`
+The previous sampling run did not converge between chains, upon rerunning the simulation with a longer warmup and samling phase we were able to achieve all Rhat values \< 1.01. The rerun of simulations was conducted with simulated data constraining all metabolites and assuming 10% noise. The number of simulated experiments is 2 and the new data is under `data/maud_output-methionine_cycle `
 # Measurement Distributions
 Comparing the posterior distribution to the prior, it's easy to see a strong contraction towards the measured values. The prior concentrations
 and fluxes vary on the order of magnitude level, whilst this is less prevalent in the posterior. 
